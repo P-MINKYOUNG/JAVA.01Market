@@ -61,15 +61,8 @@ public class Product {
 		productList[6] = new Product(3, "휴지", 10000);
 		productList[7] = new Product(3, "쓰레기통", 3000);
 		productList[8] = new Product(3, "비누", 2000);
-
-		for (Product p : productList) {
-			System.out.println(p);
-		}		
+		
 		return productList;
-	}
-	
-	public Product[] selectProduct() {
-		return ;
 	}
 
 }
