@@ -1,34 +1,33 @@
 package market.run;
 
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 public class Himedia extends Product {
 
+	// 가격을 정하는 메소드
 	@Override
-	public void selectProduct(Product[] prod) {
+	public int[] selectProduct(Product[] product) {
 		int money = (int) (Math.random() * 50 + 1) * 1000;
-		
-		System.out.println(money);
 
-		Product[] product = prod;
+		Product[] sProduct = product;
 
-		int result = 0;
-		for (int i = 0; i < product.length; i++) {
-			switch (product[i].getIndex()) {
+		List<Product> list = Arrays.asList(product);
+
+		for (int i = 0; i < sProduct.length; i++) {
+			switch (sProduct[i].getIndex()) {
 			case 1:
-				result = product[i].getPrice();
-				double discount = (result * 0.9);
-				
-				System.out.println("price : " +result);
-				System.out.println("할인된 값 : " + discount);
-				
-				double result2 = money - discount;
-				System.out.println("남은 돈 : " + result2);
-
+				discount[i] = (int) (sProduct[i].getPrice() * 0.9);
+				System.out.println(discount[i]);
 			default:
 				break;
 			}
 		}
-
+		
+		return discount;
 	}
+
+
+
 }

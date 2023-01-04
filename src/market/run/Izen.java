@@ -1,29 +1,29 @@
 package market.run;
 
-public class Izen extends Product{
+import java.util.Arrays;
+import java.util.List;
+
+public class Izen extends Product {
 
 	@Override
-	public void selectProduct(Product[] prod) {
+	public int[] selectProduct(Product[] product) {
 		int money = (int) (Math.random() * 50 + 1) * 1000;
 
-		Product[] product = prod;
+		Product[] sProduct = product;
 
-		int result = 0;
-		for (int i = 0; i < product.length; i++) {
-			switch (product[i].getIndex()) {
+		List<Product> list = Arrays.asList(product);
+
+		for (int i = 0; i < sProduct.length; i++) {
+			switch (sProduct[i].getIndex()) {
 			case 2:
-				result = product[i].getPrice();
-				double discount = (result * 0.9);
-
-				System.out.println(discount);
-				
-				double result2 = money - discount;
-				System.out.println(result2);
-
+				discount[i] = (int) (sProduct[i].getPrice() * 0.9);
+				System.out.println(discount[i]);
 			default:
 				break;
 			}
 		}
 
+		return discount;
 	}
+
 }

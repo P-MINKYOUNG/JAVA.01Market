@@ -1,10 +1,16 @@
 package market.run;
 
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
 public class Product {
 
 	private int index;
 	private String product;
 	private int price;
+	public Date date = new Date();
+	public int[] discount = new int[3];
 
 	// 기본 생성자
 	public Product() {
@@ -19,9 +25,18 @@ public class Product {
 		this.price = price;
 	}
 
-	//getters & setters
+	// getters & setters
+
 	public int getIndex() {
 		return index;
+	}
+
+	public int[] getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(int[] discount) {
+		this.discount = discount;
 	}
 
 	public void setIndex(int index) {
@@ -48,8 +63,8 @@ public class Product {
 	public String toString() {
 		return "Product [index=" + index + ", product=" + product + ", price=" + price + "]";
 	}
-	
-	//제품 리스트
+
+	// 제품 리스트
 	public Product[] loadProductList() {
 
 		Product[] productList = new Product[9];
@@ -67,25 +82,43 @@ public class Product {
 		return productList;
 	}
 
-	
-	//가격을 정하는 메소드
-	public void selectProduct(Product[] prod) {
+	// 가격을 정하는 메소드
+	public int[] selectProduct(Product[] product) {
 		int money = (int) (Math.random() * 50 + 1) * 1000;
 
-		Product[] product = prod;
+		Product[] sProduct = product;
 
-		int result = 0;
-		for (int i = 0; i < product.length; i++) {
-			switch (product[i].getIndex()) {
+		List<Product> list = Arrays.asList(product);
+
+		for (int i = 0; i < sProduct.length; i++) {
+			switch (sProduct[i].getIndex()) {
 			case 1:
-				result = product[i].getPrice();
-				double discount = (result * 0.9);
-
-				System.out.println(discount);
+				discount[i] = (int) (sProduct[i].getPrice() * 0.9);
 			default:
 				break;
 			}
 		}
+
+		return discount;
 	}
 
+	// 영수증 출력 메소드(날짜, 가격, 값, 상품 목록)
+	public void reciept(int[] discount) {
+
+		int[] discount2 = discount;
+
+		int sum = 0;
+		for (int i = 0; i < discount2.length; i++) {
+			sum += discount2[i];
+		}
+		
+		System.out.println("========== 영수증 =========");
+		System.out.println("장 본 물품	: ");
+		System.out.println("물품 가격		: ");
+		System.out.println("--------------------------");
+		System.out.println("총 금액		: " + sum);
+		System.out.println("성공 여부		: ");
+		System.out.println(date);
+
+	}
 }
