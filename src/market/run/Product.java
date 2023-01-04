@@ -5,20 +5,21 @@ public class Product {
 	private int index;
 	private String product;
 	private int price;
-//	private double discount;
 
-	
+	// 기본 생성자
 	public Product() {
 		super();
 	}
-	
-	public Product(int index, String product, int price) {
-	super();
-	this.index = index;
-	this.product = product;
-	this.price = price;
-}
 
+	// 모든 변수를 초기화 하는 생성자
+	public Product(int index, String product, int price) {
+		super();
+		this.index = index;
+		this.product = product;
+		this.price = price;
+	}
+
+	//getters & setters
 	public int getIndex() {
 		return index;
 	}
@@ -48,6 +49,7 @@ public class Product {
 		return "Product [index=" + index + ", product=" + product + ", price=" + price + "]";
 	}
 	
+	//제품 리스트
 	public Product[] loadProductList() {
 
 		Product[] productList = new Product[9];
@@ -61,10 +63,12 @@ public class Product {
 		productList[6] = new Product(3, "휴지", 10000);
 		productList[7] = new Product(3, "쓰레기통", 3000);
 		productList[8] = new Product(3, "비누", 2000);
-		
+
 		return productList;
 	}
+
 	
+	//가격을 정하는 메소드
 	public void selectProduct(Product[] prod) {
 		int money = (int) (Math.random() * 50 + 1) * 1000;
 
@@ -85,11 +89,3 @@ public class Product {
 	}
 
 }
-	
-	
-	
-	
-	
-
-	
-
