@@ -53,7 +53,7 @@ public class Product {
 		Product[] productList = new Product[9];
 
 		productList[0] = new Product(1, "라면", 5000);
-		productList[1] = new Product(1, "김치", 10000);
+		productList[1] = new Product(1, "김치", 8000);
 		productList[2] = new Product(1, "계란", 10000);
 		productList[3] = new Product(2, "삼겹살", 30000);
 		productList[4] = new Product(2, "소고기", 40000);
@@ -63,6 +63,25 @@ public class Product {
 		productList[8] = new Product(3, "비누", 2000);
 		
 		return productList;
+	}
+	
+	public void selectProduct(Product[] prod) {
+		int money = (int) (Math.random() * 50 + 1) * 1000;
+
+		Product[] product = prod;
+
+		int result = 0;
+		for (int i = 0; i < product.length; i++) {
+			switch (product[i].getIndex()) {
+			case 1:
+				result = product[i].getPrice();
+				double discount = (result * 0.9);
+
+				System.out.println(discount);
+			default:
+				break;
+			}
+		}
 	}
 
 }

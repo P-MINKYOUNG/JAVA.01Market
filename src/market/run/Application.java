@@ -15,8 +15,13 @@ public class Application {
 		
 		Himedia hi = new Himedia();
 		Product pro = new Product();
+		Izen izen = new Izen();
+		Sangyong sangyong = new Sangyong();
 		
 		hi.selectProduct(pro.loadProductList());
+		izen.selectProduct(pro.loadProductList());
+		sangyong.selectProduct(pro.loadProductList());
+		
 
 	}
 
