@@ -10,12 +10,10 @@ public class Market {
 	int i2 = (int) (Math.random() * 9);
 	int i3 = (int) (Math.random() * 9);
 	int money = (int) (Math.random() * 50 + 1) * 1000;
-	int sumDiscount;
+	int noDiscount1, noDiscount2, noDiscount3, sumNoDiscount;
 	int sumAll;
 
 	// getters & setters
-
-
 	public int getDiscount1() {
 		return discount1;
 	}
@@ -72,12 +70,36 @@ public class Market {
 		this.money = money;
 	}
 
-	public int getSumDiscount() {
-		return sumDiscount;
+	public int getNoDiscount1() {
+		return noDiscount1;
 	}
 
-	public void setSumDiscount(int sumDiscount) {
-		this.sumDiscount = sumDiscount;
+	public void setNoDiscount1(int noDiscount1) {
+		this.noDiscount1 = noDiscount1;
+	}
+
+	public int getNoDiscount2() {
+		return noDiscount2;
+	}
+
+	public void setNoDiscount2(int noDiscount2) {
+		this.noDiscount2 = noDiscount2;
+	}
+
+	public int getNoDiscount3() {
+		return noDiscount3;
+	}
+
+	public void setNoDiscount3(int noDiscount3) {
+		this.noDiscount3 = noDiscount3;
+	}
+
+	public int getSumNoDiscount() {
+		return sumNoDiscount;
+	}
+
+	public void setSumNoDiscount(int sumNoDiscount) {
+		this.sumNoDiscount = sumNoDiscount;
 	}
 
 	public int getSumAll() {
@@ -87,8 +109,6 @@ public class Market {
 	public void setSumAll(int sumAll) {
 		this.sumAll = sumAll;
 	}
-	
-
 
 	// 각 상품명과 가격을 배열에 저장
 	public ProductDTO[] productList() {
@@ -131,8 +151,6 @@ public class Market {
 				discount2 = (int) ((sProduct[i2].getPrice()) * 0.9);
 			if (sProduct[i3].getIndex() == 1)
 				discount3 = (int) ((sProduct[i3].getPrice()) * 0.9);
-
-			System.out.println(discount1 + discount2 + discount3);
 		}
 
 		return discount1 + discount2 + discount3;
@@ -143,14 +161,23 @@ public class Market {
 
 		ProductDTO[] allMoney = productList();
 
-		if (allMoney[i].getIndex() != 1 && allMoney[i2].getIndex() != 1 && allMoney[i3].getIndex() != 1) {
-			sumDiscount = (allMoney[i].getPrice() + allMoney[i2].getPrice() + allMoney[i3].getPrice());
-		}
+		System.out.println(money);
+
+		if (allMoney[i].getIndex() != 1)
+			noDiscount1 = allMoney[i].getPrice();
+
+		if (allMoney[i2].getIndex() != 1)
+			noDiscount2 = allMoney[i2].getPrice();
+		if (allMoney[i3].getIndex() != 1)
+			noDiscount3 = allMoney[i3].getPrice();
 		
-		System.out.println("sumDiscount : " + sumDiscount);
+		sumNoDiscount = noDiscount1 + noDiscount2 + noDiscount3;
 		
-		sumAll = sumDiscount + selectProduct();
-		
+
+		System.out.println("sumNoDiscount : " + sumNoDiscount);
+
+		sumAll = sumNoDiscount + selectProduct();
+
 		System.out.println("sumAll : " + sumAll);
 
 		int minusMoney = money - sumAll;
@@ -166,13 +193,15 @@ public class Market {
 
 		System.out.print("========== 영수증 =========");
 		System.out.println();
-		System.out.print("장 본 물건 : ");todayList();
+		System.out.print("장 본 물건 : ");
+		todayList();
 		System.out.println();
 		System.out.print("물품 가격 :");
 		System.out.println();
 		System.out.print("--------------------------");
 		System.out.println();
-		System.out.print("총 금액 :");finalMoney();
+		System.out.print("총 금액 :");
+		finalMoney();
 		System.out.println();
 		System.out.print("성공 여부 :");
 		System.out.println();
