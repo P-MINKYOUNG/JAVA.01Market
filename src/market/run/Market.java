@@ -1,6 +1,7 @@
 package market.run;
 
-import java.util.*;
+import java.util.Date;
+import java.util.Scanner;
 
 public class Market {
 
@@ -12,10 +13,19 @@ public class Market {
 	protected int money = (int) (Math.random() * 50 + 1) * 1000;
 	protected int noDiscount1, noDiscount2, noDiscount3, sumNoDiscount;
 	protected int sumAll;
-	protected int momMoney = (int)((Math.random()*20)+10)*1000;
+	protected int momMoney = (int) ((Math.random() * 20) + 10) * 1000;
 	protected int finalMoney;
-
+	private int count = 3;
+	
 	// getters & setters
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	
 	public int getDiscount1() {
 		return discount1;
 	}
@@ -153,15 +163,20 @@ public class Market {
 	// 엄마찬스
 
 	// 영수증 출력 메소드(날짜, 가격, 값, 상품 목록)(오버라이드)
-	public void reciept() {}
-	
-	//중간에 엄마찬스를 써서 돈을 랜덤으로 추가해주는 메소드(오버라이드)
-	public void momChance() {}
-	
-	//마지막 성공 여부를 따지는 메소드
-	public void success() {
-		if(finalMoney > 0) System.out.println("축하합니다! 장보기 성공! \n장 본 물건을 가지고 집으로 돌아가세요.");
-		else System.out.println("실패! 밥 굶고 다음 기회에...");
+	public void reciept() {
 	}
-	
+
+	// 중간에 엄마찬스를 써서 돈을 랜덤으로 추가해주는 메소드(오버라이드)
+	public void momChance() {
+	}
+
+	// 마지막 성공 여부를 따지는 메소드
+	public void success() {
+		if (finalMoney > 0) {
+			System.out.print("축하합니다! 장보기 성공! \n장 본 물건을 가지고 집으로 돌아가세요.");
+			count = 0;
+		} else
+			System.out.print("실패! 밥 굶고 다음 기회에...");
+	}
+
 }
