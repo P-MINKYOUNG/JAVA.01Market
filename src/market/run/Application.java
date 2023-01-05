@@ -10,51 +10,49 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		Himedia hi = new Himedia();
-		Izen izen = new Izen();
-		Sangyong sangyong = new Sangyong();
-		Application app = new Application();
-		Market market = new Market();
+		Market market = new Himedia();
+		Market market2 = new Izen();
+		Market market3 = new Sangyong();
 
 		Scanner sc = new Scanner(System.in);
 		System.out.print("이름을 입력하세요 : ");
 		String name = sc.next();
 		System.out.println();
 		System.out.println("=============================");
-		System.out.print("오늘의 장보기 : ");
+		System.out.print(name + "(이)의 장 볼 목록 : ");
 		market.todayList();
 		System.out.println();
 		System.out.println("=============================");
-
+		
 		while (true) {
 			System.out.println("1. 하이미디어 마트 : 식품 10프로 할인");
 			System.out.println("2. 이젠 마트 : 정육 10프로 할인");
 			System.out.println("3. 쌍용 마트 : 생활용품 할인 10프로 할인");
-			System.out.println();
+			System.out.println("=============================");
 			System.out.print("마트를 선택해주세요 : ");
 			char select = sc.next().charAt(0);
+			System.out.println("=============================");
 
 			if (select == '1') {
-				hi.finalMoney();
+				market.finalMoney();
 				System.out.println();
-				hi.reciept();
+				market.reciept();
 				break;
-			}
-//			else if (select == '2') {
-//				izen.selectProduct(market.productList());
-//				break;
-//			} else if (select == '3') {
-//				sangyong.selectProduct(market.productList());
-//				break;
-//			} 
-			else {
+			} else if (select == '2') {
+				market2.finalMoney();
+				System.out.println();
+				market2.reciept();
+				break;
+			} else if (select == '3') {
+				market3.finalMoney();
+				System.out.println();
+				market3.reciept();
+				break;
+			} else {
 				System.out.println("존재하는 마트를 선택해주세요.");
 				continue;
 			}
 
 		}
-// > 프로덕트에 영수증을 출력하는 메소드를 짜서 오버라이드 > 아예 다 끝나고 엄마찬스를 돌려서 남은 돈에 선택한 금액만큼
-// 추가 해주고 > 그게 0보다 크면 성공! 0보다 작으면 실패!
-
 	}
 }

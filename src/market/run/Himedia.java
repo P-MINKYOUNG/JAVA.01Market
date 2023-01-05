@@ -6,7 +6,7 @@ public class Himedia extends Market {
 
 	// 가격을 정하는 메소드
 	@Override
-	public int selectProduct() {
+	public int setProductPrice() {
 
 		// 새로운 객체에 productList의 리턴값을 받아서 저장해준다.
 		ProductDTO[] sProduct = productList();
@@ -32,9 +32,6 @@ public class Himedia extends Market {
 
 		ProductDTO[] allMoney = productList();
 
-		// 랜덤으로 받은 돈
-		System.out.println("money : " + money);
-
 		// 만약 배열의 인덱스가 1이 아닐 경우 할인하지 않으므로 그것의 값을 noDiscount에 저장한다.
 		if (allMoney[i].getIndex() != 1)
 			noDiscount1 = allMoney[i].getPrice();
@@ -47,17 +44,11 @@ public class Himedia extends Market {
 		// 할인되지 않은 상품들의 값을 모두 더해준다.
 		sumNoDiscount = noDiscount1 + noDiscount2 + noDiscount3;
 
-		System.out.println("sumNoDiscount : " + sumNoDiscount);
-
 		// 할인되지 않은 상품의 가격 + 할인된 상품의 가격
-		sumAll = sumNoDiscount + selectProduct();
-
-		System.out.println("sumAll : " + sumAll);
+		sumAll = sumNoDiscount + setProductPrice();
 
 		// 가진 돈에서 상품의 가격을 모두 합한 것 만큼 빼준다.
 		int minusMoney = money - sumAll;
-
-		System.out.println("최종 값 : " + minusMoney);
 
 		return minusMoney;
 	}
@@ -65,18 +56,19 @@ public class Himedia extends Market {
 	// 영수증 출력
 	@Override
 	public void reciept() {
-
+		System.out.println("사야하는 물품의 가격은 " + sumAll + "원 입니다.");
+		System.out.println();
 		System.out.print("========== 영수증 =========");
 		System.out.println();
-		System.out.print("장 본 물건 : ");
+		System.out.print("구매한 물건 : ");
 		todayList();
 		System.out.println();
-		System.out.print("물품 가격 :");
+		System.out.println("받은 돈 : " + money);
+		System.out.print("물품 가격 : " + sumAll);
 		System.out.println();
 		System.out.print("--------------------------");
 		System.out.println();
-		System.out.print("총 금액 :");
-		finalMoney();
+		System.out.print("총 금액 : " + finalMoney());
 		System.out.println();
 		System.out.print("성공 여부 :");
 		System.out.println();
