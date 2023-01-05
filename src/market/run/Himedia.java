@@ -39,6 +39,7 @@ public class Himedia extends Market {
 			noDiscount2 = allMoney[i2].getPrice();
 		if (allMoney[i3].getIndex() != 1)
 			noDiscount3 = allMoney[i3].getPrice();
+		
 
 		// 할인되지 않은 상품들의 값을 모두 더해준다.
 		sumNoDiscount = noDiscount1 + noDiscount2 + noDiscount3;
@@ -69,8 +70,7 @@ public class Himedia extends Market {
 				break;
 			} else if (answer == 'N') {
 				// 반복문을 빠져나가는 공식
-				momMoney = 0;
-				break;
+				return;
 			} else {
 				// 알맞은 문자를 입력하라는 안내문구
 				System.out.println("알맞은 내용을 입력해주세요.");
@@ -86,21 +86,23 @@ public class Himedia extends Market {
 		System.out.println();
 		System.out.print("=============== 영수증 ===============");
 		System.out.println();
-		System.out.print("구매한 물건 : ");
-		todayList();
+		System.out.print("내가 가지고 있는 돈 : " + money);
 		System.out.println();
-		System.out.println("내가 가지고 있는 돈 : " + money);
+		System.out.println("엄마찬스 + 내가 가지고 있는 돈 : " + finalMoney);
+		System.out.println();
 		System.out.print("상품 총 가격 : " + sumAll);
 		System.out.println();
 		System.out.print("-----------------------------------");
 		System.out.println();
 		System.out.print("Total : " + finalMoney());
 		System.out.println();
-		System.out.print("성공 여부 : ");
-		success();
+		System.out.print("-----------------------------------");
 		System.out.println();
 		System.out.print(date);
 		System.out.println();
+		System.out.print("-----------------------------------");
+		System.out.println();
+		success();
 
 	}
 }

@@ -7,25 +7,25 @@ public class Market {
 
 	protected int discount1, discount2, discount3;
 	protected Date date = new Date();
-	protected int i = (int) (Math.random() * 9);
-	protected int i2 = (int) (Math.random() * 9);
-	protected int i3 = (int) (Math.random() * 9);
+	protected static int i = (int) (Math.random() * 9);
+	protected static int i2 = (int) (Math.random() * 9);
+	protected static int i3 = (int) (Math.random() * 9);
 	protected int money = (int) (Math.random() * 50 + 1) * 1000;
 	protected int noDiscount1, noDiscount2, noDiscount3, sumNoDiscount;
 	protected int sumAll;
 	protected int momMoney = (int) ((Math.random() * 20) + 10) * 1000;
 	protected int finalMoney;
-	private int count = 3;
-	
+	public int count = 3;
+
 	// getters & setters
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
+
 	public int getCount() {
 		return count;
 	}
-	
+
 	public int getDiscount1() {
 		return discount1;
 	}
@@ -160,7 +160,6 @@ public class Market {
 	public int finalMoney() {
 		return 0;
 	}
-	// 엄마찬스
 
 	// 영수증 출력 메소드(날짜, 가격, 값, 상품 목록)(오버라이드)
 	public void reciept() {
@@ -173,10 +172,12 @@ public class Market {
 	// 마지막 성공 여부를 따지는 메소드
 	public void success() {
 		if (finalMoney > 0) {
-			System.out.print("축하합니다! 장보기 성공! \n장 본 물건을 가지고 집으로 돌아가세요.");
+			System.out.println("축하합니다. 성공입니다.");
 			count = 0;
-		} else
-			System.out.print("실패! 밥 굶고 다음 기회에...");
+		} else {
+			count--;
+			System.out.print("실패! 밥 굶고 다음 기회에...\n");
+		}
 	}
 
 }
