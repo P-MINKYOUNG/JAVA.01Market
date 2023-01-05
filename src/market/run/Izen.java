@@ -3,15 +3,13 @@ package market.run;
 import java.util.Arrays;
 import java.util.List;
 
-public class Izen extends Product {
+public class Izen extends Market {
 
 	@Override
-	public int[] selectProduct(Product[] product) {
+	public int[] selectProduct(ProductDTO[] product) {
 		int money = (int) (Math.random() * 50 + 1) * 1000;
 
-		Product[] sProduct = product;
-
-		List<Product> list = Arrays.asList(product);
+		ProductDTO[] sProduct = product;
 
 		for (int i = 0; i < sProduct.length; i++) {
 			switch (sProduct[i].getIndex()) {

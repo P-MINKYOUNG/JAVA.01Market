@@ -3,15 +3,14 @@ package market.run;
 import java.util.Arrays;
 import java.util.List;
 
-public class Sangyong extends Product {
+public class Sangyong extends Market{
 
 	@Override
-	public int[] selectProduct(Product[] product) {
+	public int[] selectProduct(ProductDTO[] product) {
 		int money = (int) (Math.random() * 50 + 1) * 1000;
 
-		Product[] sProduct = product;
+		ProductDTO[] sProduct = product;
 
-		List<Product> list = Arrays.asList(product);
 
 		for (int i = 0; i < sProduct.length; i++) {
 			switch (sProduct[i].getIndex()) {

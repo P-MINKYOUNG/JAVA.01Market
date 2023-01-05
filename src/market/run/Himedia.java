@@ -4,16 +4,14 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class Himedia extends Product {
+public class Himedia extends Market {
 
 	// 가격을 정하는 메소드
 	@Override
-	public int[] selectProduct(Product[] product) {
+	public int[] selectProduct(ProductDTO[] product) {
 		int money = (int) (Math.random() * 50 + 1) * 1000;
 
-		Product[] sProduct = product;
-
-		List<Product> list = Arrays.asList(product);
+		ProductDTO[] sProduct = product;
 
 		for (int i = 0; i < sProduct.length; i++) {
 			switch (sProduct[i].getIndex()) {
