@@ -127,7 +127,7 @@ public class Market {
 		ProductDTO[] productlist = productList();
 
 		label: while (true) {
-
+			//랜덤으로 저장한 숫자를 인덱스로 가지는 배열의 상품명을 가져온다.(동일 숫자인 경우 반복문으로 돌아가 다시 숫자 출력)
 			if (i != i2 && i != i3 && i2 != i3) {
 				System.out.print(productlist[i].getProduct() + " ");
 				System.out.print(productlist[i2].getProduct() + " ");
@@ -141,10 +141,13 @@ public class Market {
 
 	// 선택한 상품에 해당하는 할인 상품 가격의 합계를 정하는 메소드(오버라이드)
 	public int selectProduct() {
-
+		
+		//새로운 객체에 productList의 리턴값을 받아서 저장해준다.
 		ProductDTO[] sProduct = productList();
 
+		//동일 숫자가 아닐 경우
 		if (i != i2 || i != i3 || i2 != i3) {
+			//랜덤으로 받은 숫자를 인덱스로 하는 배열의 인덱스로 저장한 숫자가 1일경우 식품에 해당하므로 10프로 할인을 적용한다.
 			if (sProduct[i].getIndex() == 1)
 				discount1 = (int) ((sProduct[i].getPrice()) * 0.9);
 			if (sProduct[i2].getIndex() == 1)
@@ -152,7 +155,8 @@ public class Market {
 			if (sProduct[i3].getIndex() == 1)
 				discount3 = (int) ((sProduct[i3].getPrice()) * 0.9);
 		}
-
+		
+		//리턴값으로 할인된 상품들의 가격을 모두 더해준다
 		return discount1 + discount2 + discount3;
 	}
 
@@ -160,9 +164,11 @@ public class Market {
 	public int finalMoney() {
 
 		ProductDTO[] allMoney = productList();
-
-		System.out.println(money);
-
+		
+		//랜덤으로 받은 돈
+		System.out.println("money : " + money);
+		
+		//만약 배열의 인덱스가 1이 아닐 경우 할인하지 않으므로 그것의 값을 noDiscount에 저장한다.
 		if (allMoney[i].getIndex() != 1)
 			noDiscount1 = allMoney[i].getPrice();
 
@@ -171,15 +177,18 @@ public class Market {
 		if (allMoney[i3].getIndex() != 1)
 			noDiscount3 = allMoney[i3].getPrice();
 		
+		//할인되지 않은 상품들의 값을 모두 더해준다.
 		sumNoDiscount = noDiscount1 + noDiscount2 + noDiscount3;
 		
 
 		System.out.println("sumNoDiscount : " + sumNoDiscount);
-
+		
+		//할인되지 않은 상품의 가격 + 할인된 상품의 가격
 		sumAll = sumNoDiscount + selectProduct();
 
 		System.out.println("sumAll : " + sumAll);
-
+		
+		//가진 돈에서 상품의 가격을 모두 합한 것 만큼 빼준다.
 		int minusMoney = money - sumAll;
 
 		System.out.println("최종 값 : " + minusMoney);
