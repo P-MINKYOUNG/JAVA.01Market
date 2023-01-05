@@ -65,9 +65,9 @@ public class Sangyong extends Market{
 			char answer = sc.next().charAt(0);
 			answer = Character.toUpperCase(answer);
 			if (answer == 'Y') {
-				System.out.println("+++++++++++++++++++++++++++++++++");
+				System.out.println("\n+++++++++++++++++++++++++++++++++++++++");
 				System.out.println("엄마찬스 성공 : " + momMoney+" 원 추가 !");
-				System.out.println("+++++++++++++++++++++++++++++++++");
+				System.out.println("+++++++++++++++++++++++++++++++++++++++");
 				break;
 			} else if (answer == 'N') {
 				// 반복문을 빠져나가는 공식
@@ -86,7 +86,7 @@ public class Sangyong extends Market{
 	public void reciept() {
 		System.out.println("장 볼 물품 가격은 " + sumAll + "원 입니다.");
 		System.out.println();
-		System.out.print("============ 영수증 ============");
+		System.out.print("=============== 영수증 ===============");
 		System.out.println();
 		System.out.print("구매한 물건 : ");
 		todayList();
@@ -94,7 +94,7 @@ public class Sangyong extends Market{
 		System.out.println("내가 가지고 있는 돈 : " + money);
 		System.out.print("상품 총 가격 : " + sumAll);
 		System.out.println();
-		System.out.print("--------------------------");
+		System.out.print("-----------------------------------");
 		System.out.println();
 		System.out.print("Total : " + finalMoney());
 		System.out.println();
