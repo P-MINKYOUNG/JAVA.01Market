@@ -30,20 +30,23 @@ public class Application {
 			System.out.println("3. 쌍용 마트 : 생활용품 할인 10프로 할인");
 			System.out.println("=============================");
 			System.out.print("마트를 선택해주세요 : ");
-			char select = sc.next().charAt(0);
+			int select = sc.nextInt();
 			System.out.println("=============================");
 
-			if (select == '1') {
+			if (select == 1) {
+				market.momChance();
 				market.finalMoney();
 				System.out.println();
 				market.reciept();
 				break;
-			} else if (select == '2') {
+			} else if (select == 2) {
+				market2.momChance();
 				market2.finalMoney();
 				System.out.println();
 				market2.reciept();
 				break;
-			} else if (select == '3') {
+			} else if (select == 3) {
+				market3.momChance();
 				market3.finalMoney();
 				System.out.println();
 				market3.reciept();
