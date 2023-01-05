@@ -1,16 +1,14 @@
 package market.run;
 
-import java.util.Arrays;
+
 import java.util.Date;
-import java.util.List;
+
 
 public class Himedia extends Market {
 
 	// 가격을 정하는 메소드
 	@Override
 	public int[] selectProduct(ProductDTO[] product) {
-		int money = (int) (Math.random() * 50 + 1) * 1000;
-
 		ProductDTO[] sProduct = product;
 
 		for (int i = 0; i < sProduct.length; i++) {
@@ -22,10 +20,27 @@ public class Himedia extends Market {
 				break;
 			}
 		}
-		
+
 		return discount;
 	}
 
+	@Override
+	public int finalMoney(int[] discount3) {
 
+		int[] discount2 = discount3;
+
+		for (int i = 0; i < discount2.length; i++) {
+			System.out.println("discount[i] : " + discount2[i]);
+			sum += discount2[i];
+		}
+
+		System.out.println("sum : " + sum);
+		
+		int minusMoney = money - sum;
+		
+		System.out.println("최종 값 : " + minusMoney);
+
+		return minusMoney;
+	}
 
 }
