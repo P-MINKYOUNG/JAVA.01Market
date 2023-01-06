@@ -30,7 +30,7 @@ public class Sangyong extends Market{
 
 		// 오늘 장볼 물품들의 가격을 모두 더하고, 가진 돈에서 그것을 뺀 값을 출력하는 메소드(오버라이드)
 		@Override
-		public int finalMoney() {
+		public void finalMoney() {
 
 			ProductDTO[] allMoney = productList();
 
@@ -51,7 +51,6 @@ public class Sangyong extends Market{
 			// 가진 돈에서 상품의 가격을 모두 합한 것 만큼 빼준다.
 			 finalMoney = money - sumAll + momMoney;
 
-			return finalMoney;
 		}
 
 	// 엄마찬스
@@ -71,6 +70,7 @@ public class Sangyong extends Market{
 				break;
 			} else if (answer == 'N') {
 				// 반복문을 빠져나가는 공식
+				momMoney = 0;
 				return;
 			} else {
 				// 알맞은 문자를 입력하라는 안내문구
@@ -87,12 +87,16 @@ public class Sangyong extends Market{
 		System.out.println();
 		System.out.print("=============== 영수증 ===============");
 		System.out.println();
-		System.out.println("내가 가지고 있는 돈 : " + money);
+		System.out.print("구매한 물건 : ");
+		todayList();
+		System.out.println();
+		System.out.print("내가 가지고 있는 돈 : " + money);
+		System.out.println();
 		System.out.print("상품 총 가격 : " + sumAll);
 		System.out.println();
 		System.out.print("-----------------------------------");
 		System.out.println();
-		System.out.print("Total : " + finalMoney());
+		System.out.print("Total : " + finalMoney);
 		System.out.println();
 		System.out.print("-----------------------------------");
 		System.out.println();

@@ -14,14 +14,14 @@ public class Izen extends Market {
 			ProductDTO[] sProduct = productList();
 
 			// 동일 숫자가 아닐 경우
-			if (i != i2 && i != i3 && i2 != i3) {
+			if (getI() != getI2() && getI() != getI3() && getI2() != getI3()) {
 				// 랜덤으로 받은 숫자를 인덱스로 하는 배열의 인덱스로 저장한 숫자가 1일경우 식품에 해당하므로 10프로 할인을 적용한다.
-				if (sProduct[i].getIndex() == 2)
-					discount1 = (int) ((sProduct[i].getPrice()) * 0.9);
-				if (sProduct[i2].getIndex() == 2)
-					discount2 = (int) ((sProduct[i2].getPrice()) * 0.9);
-				if (sProduct[i3].getIndex() == 2)
-					discount3 = (int) ((sProduct[i3].getPrice()) * 0.9);
+				if (sProduct[getI()].getIndex() == 2)
+					discount1 = (int) ((sProduct[getI()].getPrice()) * 0.9);
+				if (sProduct[getI2()].getIndex() == 2)
+					discount2 = (int) ((sProduct[getI2()].getPrice()) * 0.9);
+				if (sProduct[getI3()].getIndex() == 2)
+					discount3 = (int) ((sProduct[getI3()].getPrice()) * 0.9);
 			}
 
 			// 리턴값으로 할인된 상품들의 가격을 모두 더해준다
@@ -30,17 +30,20 @@ public class Izen extends Market {
 
 		// 오늘 장볼 물품들의 가격을 모두 더하고, 가진 돈에서 그것을 뺀 값을 출력하는 메소드(오버라이드)
 		@Override
-		public int finalMoney() {
+		public void finalMoney() {
 
 			ProductDTO[] allMoney = productList();
 
 			// 만약 배열의 인덱스가 1이 아닐 경우 할인하지 않으므로 그것의 값을 noDiscount에 저장한다.
-			if (allMoney[i].getIndex() != 2)
-				noDiscount1 = allMoney[i].getPrice();
-			if (allMoney[i2].getIndex() != 2)
-				noDiscount2 = allMoney[i2].getPrice();
-			if (allMoney[i3].getIndex() != 2)
-				noDiscount3 = allMoney[i3].getPrice();
+			if (allMoney[getI()].getIndex() != 2)
+				noDiscount1 = allMoney[getI()].getPrice();
+			System.out.println(allMoney[getI()].getProduct() + "의 가격 : " + allMoney[getI()].getPrice());
+			if (allMoney[getI2()].getIndex() != 2)
+				noDiscount2 = allMoney[getI2()].getPrice();
+			System.out.println(allMoney[getI2()].getProduct() + "의 가격 : " + allMoney[getI2()].getPrice());
+			if (allMoney[getI3()].getIndex() != 2)
+				noDiscount3 = allMoney[getI3()].getPrice();
+			System.out.println(allMoney[getI3()].getProduct() + "의 가격 : " + allMoney[getI3()].getPrice());
 			
 
 			// 할인되지 않은 상품들의 값을 모두 더해준다.
@@ -51,8 +54,6 @@ public class Izen extends Market {
 
 			// 가진 돈에서 상품의 가격을 모두 합한 것 만큼 빼준다.
 			 finalMoney = money - sumAll + momMoney;
-
-			return finalMoney;
 		}
 
 
@@ -73,6 +74,7 @@ public class Izen extends Market {
 				break;
 			} else if (answer == 'N') {
 				// 반복문을 빠져나가는 공식
+				momMoney = 0;
 				return;
 			} else {
 				// 알맞은 문자를 입력하라는 안내문구
@@ -82,19 +84,22 @@ public class Izen extends Market {
 		}
 	}
 
-	// 영수증 출력
 	@Override
 	public void reciept() {
 		System.out.println("장 볼 물품 가격은 " + sumAll + "원 입니다.");
 		System.out.println();
 		System.out.print("=============== 영수증 ===============");
 		System.out.println();
-		System.out.println("내가 가지고 있는 돈 : " + money);
+		System.out.print("구매한 물건 : ");
+		todayList();
+		System.out.println();
+		System.out.print("내가 가지고 있는 돈 : " + money);
+		System.out.println();
 		System.out.print("상품 총 가격 : " + sumAll);
 		System.out.println();
 		System.out.print("-----------------------------------");
 		System.out.println();
-		System.out.print("Total : " + finalMoney());
+		System.out.print("Total : " + finalMoney);
 		System.out.println();
 		System.out.print("-----------------------------------");
 		System.out.println();

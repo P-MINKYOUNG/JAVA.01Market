@@ -21,13 +21,13 @@ public class Application {
 		System.out.print("플레이어의 이름을 입력하세요 : ");
 		String name = sc.nextLine();
 		System.out.println();
+		System.out.println("====================================");
+		System.out.print(name + "(이)의 장보기 목록 : ");
+		market0.todayList();
+		System.out.println();
+		System.out.println();
+		System.out.println("====================================");
 
-		
-			System.out.println("====================================");
-			System.out.print(name + "(이)의 장보기 목록 : ");
-			market0.todayList();
-			System.out.println();
-			System.out.println("====================================");
 			while (true) {
 			System.out.println("1. 하이미디어 마트 : 식품코너 10% 할인");
 			System.out.println("2. 이젠 마트 : 정육코너 10% 할인");
@@ -51,7 +51,6 @@ public class Application {
 			}
 
 			case 2: {
-				market2.setProductPrice();
 				market2.momChance();
 				market2.finalMoney();
 				System.out.println();
